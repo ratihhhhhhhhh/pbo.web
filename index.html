@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <title>Toko Sepatu</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Toko Sepatu Terbaik</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#keranjang" id="keranjang-link">Keranjang (<span id="jumlah-keranjang">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="produk">
+      <h2>Sepatu Pilihan</h2>
+      <div class="produk">
+        <div class="produk-item">
+          <img src="assets/images/sepatu1.jpeg" alt="Sepatu 1">
+          <h3>Sepatu Casual</h3>
+          <p>Harga: Rp500.000</p>
+          <button class="tambah-keranjang" data-nama="Sepatu Casual" data-harga="500000">Tambah ke Keranjang</button>
+        </div>
+        <div class="produk-item">
+          <img src="assets/images/sepatu2.jpeg" alt="Sepatu 2">
+          <h3>Sepatu Olahraga</h3>
+          <p>Harga: Rp700.000</p>
+          <button class="tambah-keranjang" data-nama="Sepatu Olahraga" data-harga="700000">Tambah ke Keranjang</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="keranjang" style="display:none;">
+      <h2>Keranjang Belanja</h2>
+      <ul id="daftar-keranjang"></ul>
+      <p>Total: <span id="total-harga">Rp0</span></p>
+      <button id="checkout">Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Toko Sepatu</p>
+  </footer>
+
+  <script>
+    // Array untuk menyimpan item keranjang
+    let keranjang = [];
+
+    // Menambahkan item ke keranjang
+    const tombolTambahKeranjang = document.querySelectorAll('.tambah-keranjang');
+    tombolTambahKeranjang.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const nama = event.target.dataset.nama;
+        const harga = parseInt(event.target.dataset.harga);
+        keranjang.push({ nama, harga });
+
+        // Update jumlah item di keranjang
+        document.getElementById('jumlah-keranjang').textContent = keranjang.length;
+
+        // Update total harga
+        const totalHarga = keranjang.reduce((total, item) => total + item.harga, 0);
+        document.getElementById('total-harga').textContent = `Rp${totalHarga.toLocaleString()}`;
+
+        // Menampilkan item keranjang
+        updateKeranjang();
+      });
+    });
+
+    // Fungsi untuk memperbarui tampilan keranjang
+    function updateKeranjang() {
+      const daftarKeranjang = document.getElementById('daftar-keranjang');
+      daftarKeranjang.innerHTML = ''; // Bersihkan daftar
+
+      keranjang.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nama} - Rp${item.harga.toLocaleString()}`;
+        daftarKeranjang.appendChild(li);
+      });
+    }
+
+    // Menampilkan atau menyembunyikan keranjang saat diklik
+    document.getElementById('keranjang-link').addEventListener('click', () => {
+      const keranjangSection = document.getElementById('keranjang');
+      if (keranjangSection.style.display === 'none') {
+        keranjangSection.style.display = 'block';
+      } else {
+        keranjangSection.style.display = 'none';
+      }
+    });
+
+    // Menangani checkout (hanya sebagai contoh)
+    document.getElementById('checkout').addEventListener('click', () => {
+      alert('Terima kasih telah berbelanja! Proses checkout belum tersedia.');
+    });
+
+    // Menyembunyikan keranjang jika pengguna mengklik di luar
+    window.addEventListener('click', (event) => {
+      if (!event.target.closest('#keranjang') && !event.target.closest('#keranjang-link')) {
+        document.getElementById('keranjang').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
