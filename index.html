@@ -28,15 +28,15 @@
       <div class="produk">
         <!-- SepatuCasual -->
         <div class="produk-item">
-          <img src="assets/images/sepatu1.jpeg" alt="Sepatu Casual">
-          <h3>SepatuCasual</h3>
+          <img src="sepatu1.jpeg" alt="Sepatu Casual">
+          <h3>Sepatu Casual</h3>
           <p>Harga: Rp500.000</p>
           <button class="tambah-keranjang" data-nama="Sepatu Casual" data-harga="500000">Tambah ke Keranjang</button>
         </div>
 
         <!-- SepatuOlahraga -->
         <div class="produk-item">
-          <img src="assets/images/sepatu2.jpeg" alt="Sepatu Olahraga">
+          <img src="sepatu2.jpeg" alt="Sepatu Olahraga">
           <h3>Sepatu Olahraga</h3>
           <p>Harga: Rp700.000</p>
           <button class="tambah-keranjang" data-nama="Sepatu Olahraga" data-harga="700000">Tambah ke Keranjang</button>
@@ -44,24 +44,24 @@
 
         <!-- SepatuFormal -->
         <div class="produk-item">
-          <img src="assets/images/sepatu3.jpeg" alt="Sepatu Formal">
-          <h3>SepatuFormal</h3>
+          <img src="sepatu3.jpeg" alt="Sepatu Formal">
+          <h3>Sepatu Formal</h3>
           <p>Harga: Rp900.000</p>
           <button class="tambah-keranjang" data-nama="Sepatu Formal" data-harga="900000">Tambah ke Keranjang</button>
         </div>
 
         <!-- SepatuSneaker -->
         <div class="produk-item">
-          <img src="assets/images/sepatu4.jpeg" alt="Sepatu Sneaker">
-          <h3>SepatuSneaker</h3>
+          <img src="sepatu4.jpeg" alt="Sepatu Sneaker">
+          <h3>Sepatu Sneaker</h3>
           <p>Harga: Rp650.000</p>
           <button class="tambah-keranjang" data-nama="Sepatu Sneaker" data-harga="650000">Tambah ke Keranjang</button>
         </div>
 
         <!-- SepatuBoots -->
         <div class="produk-item">
-          <img src="assets/images/sepatu5.jpeg" alt="Sepatu Boots">
-          <h3>SepatuBoots</h3>
+          <img src="sepatu5.jpeg" alt="Sepatu Boots">
+          <h3>Sepatu Boots</h3>
           <p>Harga: Rp850.000</p>
           <button class="tambah-keranjang" data-nama="Sepatu Boots" data-harga="850000">Tambah ke Keranjang</button>
         </div>
@@ -97,7 +97,7 @@
 
         // Update total harga
         const totalHarga = keranjang.reduce((total, item) => total + item.harga, 0);
-        document.getElementById('total-harga').textContent = `Rp${totalHarga.toLocaleString()}`;
+        document.getElementById('total-harga').textContent = Rp${totalHarga.toLocaleString()};
 
         // Menampilkan item keranjang
         updateKeranjang();
@@ -111,7 +111,7 @@
 
       keranjang.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.nama} - Rp${item.harga.toLocaleString()}`;
+        li.textContent = ${item.nama} - Rp${item.harga.toLocaleString()};
         daftarKeranjang.appendChild(li);
       });
     }
